@@ -1,0 +1,45 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+web = webdriver.Chrome(executable_path="E:\chromedriver.exe")
+web.get("http://takola.ditpsmk.net/login")
+myMail = "samokit@gmail.com"
+myNPSN = "20517716"
+myKodeReg = "1CF6DMF70M"
+
+time.sleep(5)
+btn_ops = web.find_element_by_xpath('//*[@id="login"]/div[1]/button')
+btn_ops.click()
+time.sleep(3)
+
+btn_alternatif = web.find_element_by_xpath('//*[@id="login"]/div[3]/button')
+btn_alternatif.click()
+time.sleep(3)
+
+txt_email = web.find_element_by_xpath('//*[@id="login-form"]/p[1]/input')
+txt_email.send_keys(myMail)
+time.sleep(3)
+txt_npsn = web.find_element_by_xpath('//*[@id="login-form"]/p[2]/input')
+txt_npsn.send_keys(myNPSN)
+time.sleep(3)
+txt_kodereg = web.find_element_by_xpath('//*[@id="login-form"]/p[3]/input')
+txt_kodereg.send_keys(myKodeReg)
+time.sleep(3)
+
+btn_masuk = web.find_element_by_xpath('//*[@id="login-form"]/div[2]/ul/li/input')
+btn_masuk.click()
+
+time.sleep(60)
+
+time.sleep(5)
+mn_kelengkapan = web.find_element_by_xpath('//*[@id="ext-gen1152"]/div/span')
+mn_kelengkapan.click()
+
+submenu_sertifikasi = web.find_element_by_xpath('//*[@id="banper2022"]/div[1]')
+submenu_sertifikasi.click()
+time.sleep(5)
+
+isian_siswa = web.find_element_by_xpath('//*[@id="combo_peserta_didik_id-inputEl"]')
+isian_siswa.send_keys('dera')
+isian_siswa.send_keys(Keys.ENTER)
